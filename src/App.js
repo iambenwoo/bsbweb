@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import TopBar from './Components/Nav/TopBar';
+import Drawer from './Components/Nav/Drawer';
+import Body from './Containers/Body';
+import Footer from './Components/Nav/Footer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import PageResourceSummary from './Containers/PageResourceSummary';
+import PageLabel2 from './Containers/PageLabel2';
+
+class App extends Component {
+
+  render() {
+    return (
+      <BrowserRouter>
+        <React.Fragment>
+          <TopBar />
+          <Drawer />
+          <Body>
+            <Route path="/label2" exact component={PageLabel2} />
+            <Route path="/" exact component={PageResourceSummary} />
+          </Body>
+          <Footer />
+        </React.Fragment>
+      </BrowserRouter>
+    );
+  }
+
 }
 
 export default App;
